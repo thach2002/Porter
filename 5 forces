@@ -1,0 +1,62 @@
+npm run dev
+npm install -D tailwindcss postcss autoprefixer
+npx tailwindcss init -p
+content: [
+  "./index.html",
+  "./src/**/*.{js,ts,jsx,tsx}",
+],
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+npm install framer-motion
+npx shadcn-ui@latest init
+npx shadcn-ui@latest add card
+import { Card, CardContent } from "@/components/ui/card";
+import { motion } from "framer-motion";
+
+export default function PortersFiveForces() {
+  return (
+    <div className="p-8 max-w-5xl mx-auto">
+      <motion.h1
+        className="text-3xl font-bold mb-6 text-center"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+      >
+        Porter’s Five Forces Analysis – VietHealth Devices (VHD)
+      </motion.h1>
+
+      <div className="grid grid-cols-3 gap-6">
+        {/* Competitive Rivalry */}
+        <Card className="col-span-3 bg-red-50 border-red-300">
+          <CardContent className="p-6">
+            <h2 className="text-xl font-semibold text-red-700 mb-2 text-center">
+              Competitive Rivalry: High
+            </h2>
+            <p>
+              The Vietnamese medical device market faces intense rivalry,
+              with ~90% of devices historically imported. Foreign entrants
+              compete on quality, innovation, and cost. VHD must improve
+              efficiency and product quality to stand out. AI-driven predictive
+              maintenance and computer-vision QC offer cost and quality
+              advantages.
+            </p>
+          </CardContent>
+        </Card>
+
+        {/* ... same pattern for Buyers, Suppliers, New Entrants, Substitutes */}
+      </div>
+    </div>
+  );
+}
+import PortersFiveForces from "./components/PortersFiveForces";
+
+function App() {
+  return (
+    <div>
+      <PortersFiveForces />
+    </div>
+  );
+}
+
+export default App;
+npm run dev
